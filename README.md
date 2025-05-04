@@ -1,66 +1,94 @@
-# controle-estoque
 Sistema de Controle de Estoque
-Este projeto é um sistema simples de controle de estoque feito em Python, usando arquivos JSON para armazenar dados e um terminal interativo para gerenciar usuários e produtos.
+Este projeto é um Sistema de Controle de Estoque desenvolvido com Python, utilizando o banco de dados SQLite para armazenar informações de usuários, produtos e logs. A aplicação possui uma interface gráfica construída com o Tkinter, permitindo que os usuários possam adicionar, visualizar e movimentar os produtos do estoque.
 
 Funcionalidades
-Cadastro de usuários com perfis (admin e comum)
+Login de usuários: Usuários podem fazer login com um nome de usuário e senha. O sistema tem um usuário admin padrão, com permissões especiais.
 
-Autenticação de login
+Cadastro de produtos: Permite adicionar novos produtos ao estoque.
 
-Cadastro e listagem de produtos
+Movimentação de estoque: Permite aumentar ou diminuir a quantidade de um produto no estoque.
 
-Registro de entradas e saídas no estoque
+Visualização do estoque: Exibe uma lista de todos os produtos com suas quantidades.
 
-Logs de operações gravados em arquivo logs.txt
+Logs de ações: Registra todas as ações realizadas (login, adição de produto, movimentações) para controle e auditoria.
 
-Pré-requisitos
-Python 3 instalado no computador.
-Verifique com:
+Tecnologias Utilizadas
+Python 3.x
 
-bash
-Copiar
-Editar
-python --version
-Como rodar
-Baixe os arquivos
+Tkinter: Para a interface gráfica do usuário (GUI).
 
-Coloque todos os arquivos .py e .json (se precisar, os JSON vazios são só {}) na mesma pasta.
+SQLite: Banco de dados local para armazenar usuários, produtos e logs.
 
-Instale bibliotecas necessárias
-Não usamos nada externo, só as bibliotecas padrão. Então, não precisa instalar nada extra!
-
-Rode o sistema
-No terminal:
+Como Usar
+1. Instalar Dependências
+Este projeto utiliza apenas Python 3.x e a biblioteca Tkinter, que geralmente já vem instalada com o Python. Caso não tenha o Tkinter, instale-o utilizando:
 
 bash
 Copiar
 Editar
-python nome_do_arquivo.py
-Faça login
-Use o usuário e senha padrão (se não mudou no código):
+pip install tk
+2. Executar o Programa
+Clone ou baixe o repositório.
+
+Execute o arquivo principal:
+
+bash
+Copiar
+Editar
+python main.py
+3. Login
+Ao iniciar o programa, será exibida a tela de login. O usuário admin padrão é:
 
 Usuário: admin
 
 Senha: admin123
 
-Como testar
-Cadastrar produtos
-→ Acesse com admin e escolha a opção de cadastrar produto.
+4. Funcionalidades da Tela Principal
+Após o login, a tela principal exibirá as seguintes opções, dependendo do perfil do usuário (comum ou admin):
 
-Simular entrada/saída
-→ Faça movimentações para ver o estoque mudando.
+Adicionar Produto: Permite adicionar novos produtos ao estoque.
 
-Checar os logs
-→ Veja no arquivo logs.txt se os registros estão sendo gravados.
+Visualizar Estoque: Exibe todos os produtos com suas respectivas quantidades.
 
-Criar novos usuários
-→ Apenas admins podem criar outros usuários.
+Movimentar Estoque: Permite adicionar ou remover unidades de um produto específico.
 
-Estrutura dos arquivos
-main.py → Código principal do sistema
+Ver Logs: Exibido apenas para administradores, mostra os logs de ações realizadas.
 
-users.json → Armazena usuários
+5. Encerrando o Programa
+Para sair da aplicação, basta clicar no botão Sair na tela principal.
 
-products.json → Armazena produtos
+Estrutura do Banco de Dados
+O sistema utiliza um banco de dados SQLite com três tabelas principais:
 
-logs.txt → Guarda histórico de operações
+usuarios: Armazena os dados dos usuários.
+
+id: Identificador único do usuário.
+
+username: Nome de usuário.
+
+password: Senha do usuário.
+
+perfil: Perfil do usuário (admin ou comum).
+
+produtos: Armazena os dados dos produtos no estoque.
+
+id: Identificador único do produto.
+
+nome: Nome do produto.
+
+quantidade: Quantidade em estoque.
+
+logs: Armazena um histórico de ações realizadas no sistema.
+
+id: Identificador único do log.
+
+usuario: Usuário que realizou a ação.
+
+acao: Descrição da ação realizada.
+
+data: Data e hora da ação.
+
+Funcionalidades Adicionais
+Logs de Ação: Cada login, adição de produto e movimentação no estoque são registrados no banco de dados para controle.
+
+Validação de Entrada: O sistema valida se os campos estão preenchidos corretamente, garantindo que não haja erros durante a execução.
